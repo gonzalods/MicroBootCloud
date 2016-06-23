@@ -1,5 +1,0 @@
-spring :
-  application :
-    name : test-micorservice
-sample:
-  config: ${SAMPLE_CONFIG:hello}
