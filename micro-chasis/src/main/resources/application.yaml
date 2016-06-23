@@ -1,0 +1,5 @@
+spring :
+  application :
+    name : ${MICROSERVICE_NAME:microservice}
+server:
+  port: ${PORT:8081}
