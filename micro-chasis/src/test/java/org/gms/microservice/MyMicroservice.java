@@ -1,16 +1,13 @@
 package org.gms.microservice;
 
+import java.util.Collections;
 import java.util.Map;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.stereotype.Component;
-
-import jersey.repackaged.com.google.common.collect.ImmutableMap;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
 public class MyMicroservice extends Microservice {
@@ -28,20 +25,17 @@ public class MyMicroservice extends Microservice {
 		new MyMicroservice().run(args);
 
 	}
+}
 
-	@Component
-	@Path("/")
-	public static class DumbResource{
-		
-		@Autowired
-		public DumbResource(JerseyConfig jerseyConfig){
-			jerseyConfig.register(DumbResource.class);
-		}
-		@GET
-		@Produces("application/json")
-		public Map<String, Boolean> getResource(){
-			return ImmutableMap.of("value", true);
-		}
-	}
+@RestController
+@RequestMapping("/")
+class DumbResource{
 	
+	@Value("${discovery.consul.host}")
+	private String consul_host;
+	
+	@RequestMapping(method=RequestMethod.GET)
+	public Map<String, String> getResource(){
+		return Collections.singletonMap("discovery.consul.host", consul_host);
+	}
 }
