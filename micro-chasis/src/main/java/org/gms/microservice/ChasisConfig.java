@@ -1,8 +1,10 @@
 package org.gms.microservice;
 
-import org.springframework.context.annotation.Configuration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
-@Configuration
+@SpringBootApplication
+@EnableDiscoveryClient
 public class ChasisConfig {
 
 }
