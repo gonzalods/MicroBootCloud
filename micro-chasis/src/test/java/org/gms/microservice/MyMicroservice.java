@@ -4,12 +4,10 @@ import java.util.Collections;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-@SpringBootApplication
 public class MyMicroservice extends Microservice {
 
 	
@@ -17,7 +15,6 @@ public class MyMicroservice extends Microservice {
 	@Override
 	public Class<?>[] getModules() {
 		return new Class<?>[]{
-			MyMicroservice.class
 		};
 	}
 
@@ -27,11 +24,11 @@ public class MyMicroservice extends Microservice {
 	}
 }
 
-@RestController
+//@RestController
 @RequestMapping("/")
 class DumbResource{
 	
-	@Value("${discovery.consul.host}")
+	//@Value("${discovery.consul.host}")
 	private String consul_host;
 	
 	@RequestMapping(method=RequestMethod.GET)
