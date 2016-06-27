@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HealthResource {
 
-	@RequestMapping(value="/health", method=RequestMethod.GET)
+	@RequestMapping(value="/check/health", method=RequestMethod.GET)
 	public Map<String, Boolean> health(){
 		return Collections.singletonMap("health", true);
 	}
